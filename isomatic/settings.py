@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 import django_heroku
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,8 +32,8 @@ ALLOWED_HOSTS = []
 
 # TODO CONFIGURAR ENVIO DE EMAIL
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'cyateya35439@universidadean.edu.co'
-EMAIL_HOST_PASSWORD = 'camilonike092010  karlakarla2019'
+EMAIL_HOST_USER = 'solpromat@gmail.com'
+EMAIL_HOST_PASSWORD = 'Visa1234556'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 # TODO CONFIGURAR ENVIO DE EMAIL
@@ -58,7 +56,7 @@ INSTALLED_APPS = [
     # 'registration',DebugToolbarMiddleware
 ]
 # ///TODO PARA LOCAL Y CON ESTA VERSION SE MANEJA DJANGO 2.2.1
-#MIDDLEWARE = [
+# MIDDLEWARE = [
 #    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 #    'django.middleware.security.SecurityMiddleware',
 #    'django.contrib.sessions.middleware.SessionMiddleware',
@@ -67,7 +65,7 @@ INSTALLED_APPS = [
 #    'django.contrib.auth.middleware.AuthenticationMiddleware',
 #    'django.contrib.messages.middleware.MessageMiddleware',
 #    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-#
+
 #]
 
 # ///TODO PARA PRUDCUCCION Y CON ESTA VERSION SE MANEJA DJANGO 1.9.3
@@ -122,10 +120,10 @@ WSGI_APPLICATION = 'isomatic.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd4mo75n0nkg07l',
-        'USER': 'lraecrloqmadqs',
-        'PASSWORD': 'ccaf7e8c8a7847772ea5113e586327b3d36fcbe43322417b96f5400c6e7c9a71',
-        'HOST': 'ec2-174-129-29-101.compute-1.amazonaws.com',
+        'NAME': 'dcd55ppramu50q',
+        'USER': 'xejliakqwfcknp',
+        'PASSWORD': 'd12e1a3095bd859a8ae1ada5e600fef36b41d98136ff81ce4487f5086889cd18',
+        'HOST': 'ec2-107-22-211-248.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -195,7 +193,3 @@ django_heroku.settings(locals())
 #     '127.0.0.1',
 #     # ...
 # ]
-sentry_sdk.init(
-    dsn="https://eb4b84dca91240009ef4cf4bead97c75@sentry.io/1503244",
-    integrations=[DjangoIntegration()]
-)
