@@ -66,19 +66,19 @@ def formularioUsuario(request):
             objeto.save()
             pk = objeto.pk
             # print('********************* llave foranea  ', pk)
-            asunto = 'Registro de estudiante Exitoso Plataforma SOLPROMAT'
-            email_from = settings.EMAIL_HOST_USER
-            # aqui se pueden poner otros correos
-            # , "aleja1987@gmail.com"
-            email_to = [email_from,"aleja1987@gmail.com"]
-            email_mensaje = "Mensaje de Aviso con el Registro Exitosamente del Usuario %s" % (nombreCompleto)
-            send_mail(
-                asunto,
-                email_mensaje,
-                email_from,
-                email_to,
-                fail_silently=False
-            )
+            # asunto = 'Registro de estudiante Exitoso Plataforma SOLPROMAT'
+            # email_from = settings.EMAIL_HOST_USER
+            # # aqui se pueden poner otros correos
+            # # , "aleja1987@gmail.com"
+            # email_to = [email_from,"aleja1987@gmail.com"]
+            # email_mensaje = "Mensaje de Aviso con el Registro Exitosamente del Usuario %s" % (nombreCompleto)
+            # send_mail(
+            #     asunto,
+            #     email_mensaje,
+            #     email_from,
+            #     email_to,
+            #     fail_silently=False
+            # )
             # print('Se envio el Correo')
             # print('SE GUARDO EL OBJETO ESTUDIANTE')
             messages.success(request, 'Estudiante ' + nombreCompleto + ' se  Registro Exitosamente')
