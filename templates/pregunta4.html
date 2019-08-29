@@ -1,0 +1,220 @@
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pregunta 4</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap-grid.min.css" %}">
+    <script type="application/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}">
+    </script>
+    <script type="application/javascript" src="{% static 'js/popper.min.js' %}">
+    </script>
+    <script type="application/javascript" src="{% static 'js/bootstrap.min.js' %}">
+    </script>
+    {#    geogebra#}
+    <script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+    <script src="{% static "js/index.js" %}"></script>
+    <script>
+        //setInterval
+        var cronometro;
+
+        function carga() {
+            contador_s = 0;
+            contador_m = 0;
+            s = document.getElementById("segundos");
+            m = document.getElementById("minutos");
+
+            cronometro = setInterval(
+                function () {
+                    if (contador_s == 60) {
+                        contador_s = 0;
+                        contador_m++;
+                        m.innerHTML = contador_m;
+
+                        if (contador_m == 60) {
+                            contador_m = 0;
+                        }
+                    }
+
+                    s.innerHTML = contador_s;
+                    contador_s++;
+
+                }
+                , 1000);
+
+        }
+    </script>
+    <script type="application/javascript">
+        $(document).ready(function () {
+            $('html, body').animate({scrollTop: 0}, 'slow'); //seleccionamos etiquetas,clase o identificador destino, creamos animación hacia top de la página.
+        });
+
+    </script>
+</head>
+<body onload="carga(); nobackbutton();">
+
+{% include 'mouseAbajo.html' %}
+<div class="jumbotron">
+    {#    #}
+    <div class="container text-center">
+        {% if messages %}
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  text-center">
+                    {% for message in messages %}
+                        <p {% if message.tags == 'success' %} class="alert alert-success"{% endif %}>{{ message }}</p>
+                    {% endfor %}
+
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    {#    #}
+
+    <div class="row">
+        {% include 'sugerenciasEstudiante.html' %}
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-primary" id="botonTiempo" name="botonTiempo">
+                Tiempo : <span class="badge badge-light">Minutos: <span id="minutos">00</span> Segundos: <span
+                    id="segundos">00</span></span>
+            </button>
+        </div>
+    </div>
+
+    <br>
+    <div class="row no-gutters">
+
+        <div class="col-8 col-md-8">
+            <form action="" method="POST">{% csrf_token %}
+                <hr>
+                <h5 class="display-6 text-center">Ejercicio 4</h5>
+                <hr>
+                <strong class=""><h5>4. En u colegio hay 627 estudiantes, se sabe que hay el doble de niñas que de
+                    niños. De las
+                    niñas a todas menos a 15, les gusta mucho las matemáticas. </h5></strong>
+                <hr class="my-4">
+                <h5 class="text-center"><p>¿A cuántas niñas les gusta las matemáticas? </p></h5>
+                <hr>
+
+                <div class="custom-controls-stacked">
+                    <label class="custom-control custom-radio">
+                        <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <strong><h5>{{ formulario_PreguntaCuatro |crispy }}</h5></strong>
+                    </label>
+                </div>
+                <br>
+                <div class="col-sm text-center">
+                    <input type="submit" value="Guardar" class="btn btn-success">
+                </div>
+            </form>
+
+        </div>
+
+
+            {% include 'calculadora.html' %}
+
+    </div>
+
+    <hr>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class=".col-xs-12 .col-sm-6 .col-lg-8">
+            <div id="ggb-element"></div>
+        </div>
+    </div>
+
+</div>
+<br>
+
+<hr style="color: green; background-color: green;">
+<div class="container">
+    <div class="row">
+        <div class=".col-xs-12 .col-sm-6 .col-lg-8">
+            {% include 'blocNotas.html' %}
+
+        </div>
+    </div>
+
+</div>
+<hr style="color: green; background-color: green;">
+<div class="container" style="border-color: #0000FF;">
+    <label for=""><strong>Dibuja Tus Ideas</strong></label>
+    <div class="row .col-xs-12 .col-sm-6 .col-lg-8">
+        {% include 'canvasPaint.html' %}
+    </div>
+</div>
+<hr>
+<div class="container">
+    {% include 'enlacesVideos.html' %}
+</div>
+<script type="application/javascript">
+    var ggbApp = new GGBApplet({
+        "appName": "graphing",
+        "width": 800,
+        "height": 600,
+        "showToolBar": true,
+        "showAlgebraInput": true,
+        "showMenuBar": true
+    }, true);
+    window.addEventListener("load", function () {
+        ggbApp.inject('ggb-element');
+    });
+</script>
+
+<script type="application/javascript">
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+    var painting = document.getElementById('paint');
+    var paint_style = getComputedStyle(painting);
+    canvas.width = parseInt(paint_style.getPropertyValue('width'));
+    canvas.height = parseInt(paint_style.getPropertyValue('height'));
+    var mouse = {x: 0, y: 0};
+    canvas.addEventListener('mousemove', function (e) {
+        mouse.x = e.pageX - this.offsetLeft;
+        mouse.y = e.pageY - this.offsetTop;
+    }, false);
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#00CC99';
+    canvas.addEventListener('mousedown', function (e) {
+        ctx.beginPath();
+        ctx.moveTo(mouse.x, mouse.y);
+        canvas.addEventListener('mousemove', onPaint, false);
+    }, false);
+    canvas.addEventListener('mouseup', function () {
+        canvas.removeEventListener('mousemove', onPaint, false);
+    }, false);
+    var onPaint = function () {
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+    };
+</script>
+
+<script type="application/javascript">
+    {#     script para hacer que no se pueda volver #}
+
+    function nobackbutton() {
+
+        window.location.hash = "no-back-button";
+
+        window.location.hash = "Again-No-back-button" //chrome
+
+        window.onhashchange = function () {
+            window.location.hash = "no-back-button";
+        }
+
+    }
+</script>
+
+
+</body>
+</html>

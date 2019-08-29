@@ -1,0 +1,76 @@
+
+py manage.py makemigrations
+
+
+py manage.py migrate
+
+py manage.py collectstatic
+
+
+saber que esta instalado
+
+pip freeze
+
+******
+pip install --upgrade django-crispy-forms
+
+
+************************************
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+
+
+************************************
+manage.py makemigrations
+
+
+************************
+https://debsconsultores.blogspot.com/2019/04/ventanas-modales-con-django-usando.html?fbclid=IwAR0r2484sHPuDtFOOeG0McaloVASZII2pPc-Tv6YmJb0XqxKKPb8xsUuwhA
+
+
+https://platzi.com/blog/optimizacion-de-serializadores-drf/
+
+
+
+***************** boostrap para django
+https://pypi.org/project/django-bootstrap-datepicker-widget/
+
+********************* bloquear el no volver en el navegador
+
+http://developando.com/blog/deshabilitar-el-boton-volver-del-navegador/
+
+
+***************************buscar objetos
+https://programadorwebvalencia.com/django-varias-tablas-unidas-por-claves-foraneas/
+
+
+********************** debug django con este plugins
+https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#getting-the-code
+
+
+***************entorno virtuales
+virtualenv
+
+
+which virtualenv
+
+crearlo
+virtualenv venv
+
+
+
+*********************seguir leyendo
+http://lineadecodigo.com/javascript/ejecutar-cada-x-segundos-en-javascript/
+
+
+////////////////// me salvo la vida
+https://realpython.com/django-redirects/
+
+
+
+// comprimir archivos
+https://martinpeveri.wordpress.com/2015/03/25/django-compressor/
+
+
+//etiquetas git
+
+https://www.galisteocantero.com/git-tag-crear-etiquetas-git/

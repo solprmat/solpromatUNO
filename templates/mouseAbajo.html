@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse</title>
+</head>
+<style type="text/css">
+    /* Just a basic preparations of the document for demonstration */
+
+
+    /* That's it: */
+    .mouse {
+        display: block;
+        position: absolute;
+        margin: 0 auto;
+        width: 26px;
+        height: 46px;
+        border-radius: 13px;
+        border: 3px solid #0000FF;
+        bottom: 20px;
+        left: 56%;
+        margin-left: -13px;
+    }
+
+    .mouse span {
+        display: block;
+        margin: 6px auto;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: #1a42d7;
+        border: 3px solid #bf1212;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-name: scroll;
+        animation-name: scroll;
+    }
+
+    @-webkit-keyframes scroll {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+        100% {
+            opacity: 0;
+            -webkit-transform: translateY(16px);
+            transform: translateY(16px);
+        }
+    }
+
+    @keyframes scroll {
+        0% {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+            transform: translateY(0);
+        }
+        100% {
+            opacity: 0;
+            -webkit-transform: translateY(16px);
+            -ms-transform: translateY(16px);
+            transform: translateY(16px);
+        }
+    }
+
+</style>
+<body>
+<div class="mouse"><span></span></div>
+</body>
+</html>
